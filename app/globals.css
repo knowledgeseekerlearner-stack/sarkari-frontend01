@@ -1,4 +1,9 @@
-/* app/globals.css */
-:root { --main: #111; }
-body { font-family: Inter, system-ui, sans-serif; color: var(--main); margin: 0; padding: 0; }
-a { color: inherit; text-decoration: none; }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove old static background */
+body {
+  @apply bg-background text-gray-900;
+  font-family: Arial, sans-serif;
+}

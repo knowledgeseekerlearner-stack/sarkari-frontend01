@@ -1,17 +1,28 @@
-import { JOBS } from "../data/jobs";
+import jobs from "../../data/jobs";
 
-type Props = { params: { id: string } };
+export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;  // ✅ FIX: Await the params
 
-export default async function JobDetail({ params }: Props) {
-  const job = JOBS.find(j => j.id === params.id);
-  if (!job) return <div style={{ padding: 40 }}>Job not found.</div>;
+  const job = jobs.find((job) => job.id === id);
+
+  if (!job) {
+    return (
+      <div className="p-10 text-center">
+        <h2 className="text-2xl font-bold">Job not found ❌</h2>
+      </div>
+    );
+  }
 
   return (
-    <div style={{ padding: 40 }}>
-      <h1>{job.title}</h1>
-      <p style={{ color: "#666", marginTop: 10 }}>{job.summary}</p>
-      <div style={{ marginTop: 20 }}>
-        <a href="#" onClick={() => history.back()}>← Back</a>
+    <div className="max-w-3xl mx-auto mt-10 bg-white shadow p-6 rounded-xl">
+      <h1 className="text-3xl font-bold mb-3">{job.title}</h1>
+      <p className="text-gray-600 mb-5">{job.description}</p>
+
+      <div className="space-y-3">
+        <p><strong>Organization:</strong> {job.organization}</p>
+        <p><strong>Vacancies:</strong> {job.vacancies}</p>
+        <p><strong>Last Date:</strong> {job.lastDate}</p>
+        <p><strong>Status:</strong> {job.status}</p>
       </div>
     </div>
   );

@@ -1,26 +1,14 @@
-export const JOBS = [
-  { 
-    id: "1",
-    title: "SSC MTS 2025 — Apply Online",
-    summary: "Apply link + last date",
-    details: "Full details for SSC MTS 2025."
+export const latestJobs = [
+  {
+    id: "ssc-mts-2025",
+    title: "SSC MTS 2025 Notification",
+    description: "SSC MTS Recruitment 2025 released for various posts.",
   },
-  { 
-    id: "2",
-    title: "UP Police Constable 2025 — 60,000+ Vacancies",
-    summary: "Vacancy details",
-    details: "Full details for UP Police Constable 2025."
+  {
+    id: "rrb-ntpc-2025",
+    title: "RRB NTPC 2025 Notification",
+    description: "Railway NTPC 2025 vacancy details.",
   },
-  { 
-    id: "3",
-    title: "Railway RRB Group D — Coming Soon (2025)",
-    summary: "Notification coming",
-    details: "Full details for RRB Group D."
-  },
-  { 
-    id: "4",
-    title: "UPSC EPFO 2025 — Notification Out",
-    summary: "Apply now",
-    details: "Full details for UPSC EPFO 2025."
-  }
 ];
+
+export default latestJobs;

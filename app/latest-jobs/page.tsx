@@ -1,23 +1,25 @@
-// app/latest-jobs/page.tsx
 import Link from "next/link";
-import { JOBS } from "./data/jobs";
+import { latestJobs } from "../data/jobs";
 
 export default function LatestJobsPage() {
   return (
-    <div style={{ padding: "40px" }}>
-      <h1>Latest Government Jobs 2024 🏆</h1>
-      <p>Find the latest Sarkari Job Notifications updated daily.</p>
+    <div className="p-6">
+      <h1 className="text-4xl font-extrabold text-center mb-10">
+        Latest Government Jobs 2025 🏆
+      </h1>
 
-      <ul>
-        {JOBS.map((job) => (
-          <li key={job.id} style={{ margin: "8px 0" }}>
-            <Link href={`/latest-jobs/${job.id}`} style={{ textDecoration: "none", color: "#111" }}>
-              {job.title}
-            </Link>
-            <div style={{ color: "#666", marginTop: 4 }}>{job.summary}</div>
-          </li>
+      <div className="space-y-6 max-w-4xl mx-auto">
+        {latestJobs.map((job) => (
+          <Link
+            key={job.id}
+            href={`/latest-jobs/${job.id}`}
+            className="block border p-6 rounded-xl shadow-sm hover:shadow-md transition bg-white"
+          >
+            <h2 className="text-xl font-semibold">{job.title}</h2>
+            <p className="text-gray-600">{job.shortDesc}</p>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
