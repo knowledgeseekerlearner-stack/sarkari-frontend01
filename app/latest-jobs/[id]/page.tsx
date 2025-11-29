@@ -1,28 +1,39 @@
-import jobs from "../../data/jobs";
+"use client";
 
-export default async function JobDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;  // ✅ FIX: Await the params
+import { latestJobs } from "@/data/jobs";   // FIXED IMPORT
+import Link from "next/link";
 
-  const job = jobs.find((job) => job.id === id);
+export default function JobDetail({ params }: any) {
+  const job = latestJobs.find((j) => j.id === params.id);   // FIXED FIND()
 
   if (!job) {
-    return (
-      <div className="p-10 text-center">
-        <h2 className="text-2xl font-bold">Job not found ❌</h2>
-      </div>
-    );
+    return <h1>Job not found</h1>;
   }
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 bg-white shadow p-6 rounded-xl">
-      <h1 className="text-3xl font-bold mb-3">{job.title}</h1>
-      <p className="text-gray-600 mb-5">{job.description}</p>
+    <div style={{ padding: 20 }}>
+      <h1>{job.title}</h1>
+      <p>{job.location}</p>
+      <p>{job.salary}</p>
 
-      <div className="space-y-3">
-        <p><strong>Organization:</strong> {job.organization}</p>
-        <p><strong>Vacancies:</strong> {job.vacancies}</p>
-        <p><strong>Last Date:</strong> {job.lastDate}</p>
-        <p><strong>Status:</strong> {job.status}</p>
+      <div style={{ marginTop: 20 }}>
+        <button
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            border: "none",
+            padding: "10px 20px",
+            borderRadius: "6px",
+            cursor: "pointer",
+          }}
+        >
+          <Link href="/latest-jobs">← Back to Jobs</Link>
+        </button>
+      </div>
+
+      <div style={{ marginTop: 30 }}>
+        <h3>Full Details:</h3>
+        <p>{job.description}</p>
       </div>
     </div>
   );
