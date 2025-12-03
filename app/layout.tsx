@@ -12,7 +12,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="flex">
+      {/* हमने यहां Tailwind की जगह कस्टम CSS क्लास 'app-background' का उपयोग किया है */}
+      <body className="flex app-background">
         <Sidebar />
         <main className="ml-64 w-full p-5">{children}</main>
       </body>

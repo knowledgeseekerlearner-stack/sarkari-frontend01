@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Remove old static background */
+/* कस्टम बैकग्राउंड क्लास */
+.app-background {
+  background-color: #F2F7FF; /* यह वही background कलर है जो आपने config में दिया था */
+  color: #111827; /* गहरा ग्रे टेक्स्ट कलर */
+}
+
 body {
-  @apply bg-background text-gray-900;
   font-family: Arial, sans-serif;
 }
